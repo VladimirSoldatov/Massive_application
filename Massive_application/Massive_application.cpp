@@ -1,9 +1,10 @@
 ﻿#include <iostream>
 using namespace std;
-
+void add_char();
 int main()
 {
     std::cout << "Hello World!\n";
+    add_char();
     int massive[10];
     for (int i = 0; i < sizeof(massive) / sizeof(int); i++)
     {
@@ -64,5 +65,81 @@ int main()
         cout << endl;
 
     }
+
     int my_size = sizeof(mas) / sizeof(int);
+    char gas[4];
+    gas[0] = 'G';
+    gas[1] = 'a';
+    gas[2] = 's';
+    gas[3] = '\0';
+    cout << gas;
+    int n = 1;
+    char* hat = (char*)malloc(sizeof(char));
+    for (int i = 0; i <=10; i++)
+    {
+        n = i + 1;
+        char* temp = (char*)malloc((++n) * sizeof(char));
+        for (int j = 0; j < n; j++) {
+            if (temp != NULL)
+                temp[j] = hat[j];
+
+            temp[n-2] = '1';
+        }
+        
+        cout << "+\0" << endl;
+        free(hat);
+        hat = (char*)malloc((n)*sizeof(char));
+   
+            for (int j = 0; j < n; j++) {
+                hat[j] = temp[j];
+            }
+        
+        temp = nullptr;
+        free(temp);
+        
+    }
+  //  hat[] = '\0';
+   // strcpy_s(hat,  sizeof(char*),"hat");
+    cout << hat<<endl;
+
+}
+void add_char()
+{
+    char* hat = (char*)malloc(sizeof(char));
+    int i = 0;
+    int n = 1;
+    
+    char key;
+    
+   char key_add = 'y';
+    while (key_add != 'n') {
+        n = i + 1;
+        cout << "Enter letter" << endl;
+        cin >> key;
+        char* temp = (char*)malloc((++n) * sizeof(char));
+        for (int j = 0; j < n; j++) {
+            if (temp != NULL)
+                temp[j] = hat[j];
+
+            temp[n - 2] = key;
+        }
+
+        cout << "+\0" << endl;
+        free(hat);
+        hat = (char*)malloc((n) * sizeof(char));
+
+        for (int j = 0; j < n; j++) {
+            hat[j] = temp[j];
+
+        }
+
+
+        temp = nullptr;
+        free(temp);
+        cout << "Go (y/n)" << endl;
+        cin >> key_add;
+        i++;
+    }
+    hat[i] = '\0';
+    cout << hat;
 }
