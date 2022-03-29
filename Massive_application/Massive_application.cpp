@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "conio.h"
+#include <windows.h>
 using namespace std;
 void add_char();
 void game();
@@ -11,7 +12,10 @@ const int a = 33;
 const int b = 20;
 int main()
 {
-    
+    HWND console = GetConsoleWindow();
+    RECT r;
+    GetWindowRect(console, &r);
+    MoveWindow(console, r.left, r.top, 800, 600, TRUE);
     //std::cout << "Hello World!\n";
     game();
     system("pause");
